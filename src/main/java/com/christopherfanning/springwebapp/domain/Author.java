@@ -1,6 +1,7 @@
 package com.christopherfanning.springwebapp.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.function.BooleanSupplier;
 
@@ -15,7 +16,7 @@ public class Author {
     private String firstName;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>();
 
     public Author() {
     }
@@ -52,10 +53,10 @@ public class Author {
         this.books = books;
     }
 
-    public Author(String lastName, String firstName, Set<Book> books) {
+    public Author(String lastName, String firstName) {
         this.lastName = lastName;
         this.firstName = firstName;
-        this.books = books;
+
     }
 
     @Override
